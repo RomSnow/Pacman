@@ -1,0 +1,10 @@
+﻿namespace Pacman.GameCore
+{
+    public enum MoveDirection
+    {
+        Left,
+        Right,
+        Up,
+        Down
+    }
+}

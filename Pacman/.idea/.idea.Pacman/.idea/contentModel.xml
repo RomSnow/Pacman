@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\ivash\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\ivash\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Pacman.1738392323.00" t="ExcludeRecursive" />
+    <e p="C:\Users\ivash\Desktop\Ulearn\Pacman\Pacman" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Pacman" t="IncludeRecursive">
+        <e p="App.xaml" t="Include" />
+        <e p="App.xaml.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="GameCore" t="Include">
+          <e p="Coin.cs" t="Include" />
+          <e p="Ghost.cs" t="Include" />
+          <e p="IMoveble.cs" t="Include" />
+          <e p="IPlayer.cs" t="Include" />
+          <e p="Map.cs" t="Include" />
+          <e p="MoveDirection.cs" t="Include" />
+          <e p="Player.cs" t="Include" />
+        </e>
+        <e p="MainWindow.xaml" t="Include" />
+        <e p="MainWindow.xaml.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="Pacman.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Pacman.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Pacman.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>
