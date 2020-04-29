@@ -2,6 +2,7 @@
 {
     public class Player : IPlayer
     {
+        private int Points;
         public IMovable Create(Map map)
         {
             throw new System.NotImplementedException();

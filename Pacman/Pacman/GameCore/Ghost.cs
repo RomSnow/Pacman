@@ -2,6 +2,7 @@
 {
     public class Ghost : IMovable
     {
+        private bool isGhostEatable;
         public IMovable Create(Map map)
         {
             throw new System.NotImplementedException();
