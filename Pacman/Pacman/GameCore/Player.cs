@@ -2,6 +2,7 @@
 {
     public class Player : IPlayer
     {
+		// Привет, Рома
         public IMovable Create(Map map)
         {
             throw new System.NotImplementedException();
