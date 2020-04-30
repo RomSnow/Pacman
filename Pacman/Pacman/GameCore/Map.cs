@@ -8,8 +8,9 @@ namespace Pacman.GameCore
     public class Map
     {
         public FieldItem[,] Field { get; set; }
-        public int Score { get; set; }
-        public int HealthPoints { get; set; }
+        public static int Score { get; set; }
+        public static int HealthPoints { get; set; }
+        public static bool IsGameOver { get; set; }
 
         private Player player;
 
@@ -18,6 +19,7 @@ namespace Pacman.GameCore
         public Map(string fieldString, Dictionary<char, Func<Map, Point, FieldItem>> convertDict,
             int healthPoints)
         {
+            IsGameOver = false;
             Score = 0;
             HealthPoints = healthPoints;
             Field = CreateFieldByString(fieldString, convertDict);

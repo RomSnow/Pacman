@@ -101,3 +101,15 @@ C:\Users\ivash\Desktop\Ulearn\Pacman\Pacman\Pacman\bin\Debug\netcoreapp3.0\zh-Ha
 C:\Users\ivash\Desktop\Ulearn\Pacman\Pacman\Pacman\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
 C:\Users\ivash\Desktop\Ulearn\Pacman\Pacman\Pacman\obj\Debug\netcoreapp3.0\Pacman.csproj.CopyComplete
 C:\Users\ivash\Desktop\Ulearn\Pacman\Pacman\Pacman\obj\Debug\netcoreapp3.0\Pacman.dll
+C:\Users\20kol\Source\Repos\RomSnow\Pacman\Pacman\Pacman\obj\Debug\netcoreapp3.0\Pacman.csprojAssemblyReference.cache
+C:\Users\20kol\Source\Repos\RomSnow\Pacman\Pacman\Pacman\obj\Debug\netcoreapp3.0\MainWindow.g.cs
+C:\Users\20kol\Source\Repos\RomSnow\Pacman\Pacman\Pacman\obj\Debug\netcoreapp3.0\App.g.cs
+C:\Users\20kol\Source\Repos\RomSnow\Pacman\Pacman\Pacman\obj\Debug\netcoreapp3.0\Pacman_Content.g.cs
+C:\Users\20kol\Source\Repos\RomSnow\Pacman\Pacman\Pacman\obj\Debug\netcoreapp3.0\Pacman_MarkupCompile.cache
+C:\Users\20kol\Source\Repos\RomSnow\Pacman\Pacman\Pacman\obj\Debug\netcoreapp3.0\Pacman_MarkupCompile.lref
+C:\Users\20kol\Source\Repos\RomSnow\Pacman\Pacman\Pacman\obj\Debug\netcoreapp3.0\MainWindow.baml
+C:\Users\20kol\Source\Repos\RomSnow\Pacman\Pacman\Pacman\obj\Debug\netcoreapp3.0\Pacman.g.resources
+C:\Users\20kol\Source\Repos\RomSnow\Pacman\Pacman\Pacman\obj\Debug\netcoreapp3.0\Pacman.csproj.CoreCompileInputs.cache
+C:\Users\20kol\Source\Repos\RomSnow\Pacman\Pacman\Pacman\obj\Debug\netcoreapp3.0\Pacman.AssemblyInfoInputs.cache
+C:\Users\20kol\Source\Repos\RomSnow\Pacman\Pacman\Pacman\obj\Debug\netcoreapp3.0\Pacman.AssemblyInfo.cs
+C:\Users\20kol\Source\Repos\RomSnow\Pacman\Pacman\Pacman\obj\Debug\netcoreapp3.0\Pacman.pdb
