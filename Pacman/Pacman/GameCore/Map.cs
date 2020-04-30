@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Pacman.GameCore
 {
@@ -7,6 +8,8 @@ namespace Pacman.GameCore
         public FieldItems[,] Field { get; set; }
         public int Points { get; set; }
         public int HealthPoints { get; set; }
+
+        private Player _player;
 
         public Map(string fieldString, Dictionary<char, FieldItems> convertDict, int healthPoints)
         {
@@ -17,14 +20,16 @@ namespace Pacman.GameCore
 
         private FieldItems[,] CreateFieldByString(string fieldString, Dictionary<char, FieldItems> convertDict)
         {
-            var lines = fieldString.Split('\n');
-            var field = new FieldItems[lines[0].Length, lines.Length];
+            var lines = fieldString.Split('\n')
+                .Select(s => s.Trim('\r'))
+                .ToArray<string>();
+            var field = new FieldItems[lines.Length, lines[0].Length];
 
             for (var l = 0; l < lines.Length; l++)
             {
                 for (var c = 0; c < lines[0].Length; c++)
                 {
-                    field[c, l] = convertDict[lines[l][c]];
+                    field[l, c] = convertDict[lines[l][c]];
                 }
             }
 

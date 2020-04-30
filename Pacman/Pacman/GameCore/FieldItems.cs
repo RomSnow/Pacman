@@ -6,6 +6,7 @@
         Player,
         Ghost,
         Coin,
-        BigCoin
+        BigCoin,
+        Respawn
     }
 }
