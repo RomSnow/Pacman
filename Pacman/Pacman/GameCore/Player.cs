@@ -2,9 +2,9 @@
 
 namespace Pacman.GameCore
 {
-    public class Player : IPlayer
+    public class Player : FieldItem, IPlayer
     {
-        public IMovable Create(Map map, Point coordinates)
+        public Player(Map map, Point point)
         {
             throw new System.NotImplementedException();
         }

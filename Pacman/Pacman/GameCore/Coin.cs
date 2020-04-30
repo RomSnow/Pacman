@@ -1,27 +1,32 @@
 ﻿using System;
+using System.Windows;
 
 namespace Pacman.GameCore
 {
-    public class Coin
+    public class Coin : FieldItem
     {
-        private int Value;
-        public Coin(int value)
+        public int Value { get; set; }
+
+        public Coin(Point point)
         {
-            Value = value;
+            throw new NotImplementedException();
         }
+
         public void CollectCoin()
         {
             throw new NotImplementedException();
         }
     }
 
-    public class BigCoin
+    public class BigCoin : FieldItem
     {
-        private int Value;
-        public BigCoin(int value)
+        private int Value { get; set; }
+
+        public BigCoin(Point point)
         {
-            Value = value;
+            
         }
+
         public void CollectCoin()
         {
             throw new NotImplementedException();

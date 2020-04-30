@@ -2,10 +2,11 @@
 
 namespace Pacman.GameCore
 {
-    public class Ghost : IMovable
+    public class Ghost : FieldItem, IMovable
     {
         private bool isGhostEatable;
-        public IMovable Create(Map map, Point coordinates)
+
+        public Ghost(Map map, Point point)
         {
             throw new System.NotImplementedException();
         }

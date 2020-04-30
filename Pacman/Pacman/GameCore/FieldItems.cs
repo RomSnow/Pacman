@@ -1,12 +1,15 @@
-﻿namespace Pacman.GameCore
+﻿using System.Windows;
+
+namespace Pacman.GameCore
 {
-    public enum FieldItems
-    {
-        Wall,
-        Player,
-        Ghost,
-        Coin,
-        BigCoin,
-        Respawn
+    public class FieldItem { }
+
+    public class Wall : FieldItem { }
+
+    public class Respawn : FieldItem {
+        public Respawn(Point point)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
