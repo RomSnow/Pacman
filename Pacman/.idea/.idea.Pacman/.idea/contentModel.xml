@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\ivash\.Rider2019.2\system\extResources" t="IncludeRecursive" />
@@ -11,6 +11,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="GameCore" t="Include">
           <e p="Coin.cs" t="Include" />
+          <e p="FieldItems.cs" t="Include" />
           <e p="Ghost.cs" t="Include" />
           <e p="IMoveble.cs" t="Include" />
           <e p="IPlayer.cs" t="Include" />
