@@ -1,8 +1,10 @@
-﻿namespace Pacman.GameCore
+﻿using System.Windows;
+
+namespace Pacman.GameCore
 {
     public class Player : IPlayer
     {
-        public IMovable Create(Map map)
+        public IMovable Create(Map map, Point coordinates)
         {
             throw new System.NotImplementedException();
         }
