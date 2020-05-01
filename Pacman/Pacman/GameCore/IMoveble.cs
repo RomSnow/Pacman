@@ -4,7 +4,7 @@ namespace Pacman.GameCore
 {
     public interface IMovable
     { 
-        void Move(); //Осуществляется перемещение объекта по карте
-        void Collision(object obj); //Обработка взаимодействия с объектами
+        void Move(out FieldItem collisionObject); //Осуществляется перемещение объекта по карте
+        void Collision(FieldItem obj); //Обработка взаимодействия с объектами
     }
 }
