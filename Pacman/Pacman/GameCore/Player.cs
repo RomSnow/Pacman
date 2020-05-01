@@ -4,8 +4,8 @@ namespace Pacman.GameCore
 {
     public class Player : FieldItem, IPlayer
     {
+        public MoveDirection Directon { get; set; }
         private Point Location { get; set; }
-        private MoveDirection Directon { get; set; }
         private Map Map { get; set; }
 
         public Player(Map map, Point point)

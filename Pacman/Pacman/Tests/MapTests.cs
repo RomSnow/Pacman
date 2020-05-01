@@ -31,15 +31,23 @@ namespace Pacman.Tests
             var normalField = new FieldItem[,]
                 {
                     {new Wall(), new Wall(), new Wall(), new Wall(), new Wall()}, 
-                    {new Wall(), new Coin(new Point(1, 1)), new Player(
-                        new Map(fieldString, converDict, 0), new Point(2,1)), new Coin( new Point(3, 1)), new Wall()},
+                    {new Wall(), new Coin(new Point()), new Player(new Map(), new Point()), new Coin( new Point(3, 1)), new Wall()},
                     {new Wall(), new Wall(), new Wall(), new Wall(), new Wall()}
                 };
 
-            var m= new Map(fieldString, converDict, 0).Field;
+            var m = new Map(fieldString, 0).Field;
             
-            Assert.AreEqual(normalField, new Map(fieldString, converDict, 0).Field);
+            for (var i = 0; i < normalField.GetLength(0); i++)
+                for (var j = 0; j < normalField.GetLength(1); j++)
+                    Assert.True(normalField[i,j].GetType() == m[i, j].GetType());
         }
-        
+
+        [Test]
+        public static void TestToString()
+        {
+            var startString = "#####\n#.P.#\n#####";
+            var map = new Map(startString, 0);
+            Assert.AreEqual(startString, map.FieldToSting());
+        }
     }
 }

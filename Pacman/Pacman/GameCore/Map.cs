@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows;
 using System.Linq;
+using System.Text;
 
 namespace Pacman.GameCore
 {
@@ -13,19 +14,36 @@ namespace Pacman.GameCore
         public static int HealthPoints { get; set; }
         public static bool IsGameOver { get; set; }
 
+        private static Dictionary<char, Func<Map, Point, FieldItem>> convertDict = 
+            new Dictionary<char, Func<Map, Point, FieldItem>>()
+            {
+                {'P', (Map map, Point point) => new Player(map, point)},
+                {'#', (map, point) => new Wall()},
+                {'G', (Map map, Point point) => new Ghost(map, point)},
+                {'.', (Map map, Point point) => new Coin(point)},
+                {'*', (Map map, Point point) => new BigCoin(point)},
+                {'R', (Map map, Point point) => new Respawn(point)}
+            };
         public int EnemyCount { get; set; }
 
         private Player player;
 
         private List<IMovable> persons;
 
-        public Map(string fieldString, Dictionary<char, Func<Map, Point, FieldItem>> convertDict,
-            int healthPoints)
+        public Map() { }
+
+        public Map(string fieldString, int healthPoints)
         {
             IsGameOver = false;
             Score = 0;
             HealthPoints = healthPoints;
-            Field = CreateFieldByString(fieldString, convertDict);
+            persons = new List<IMovable>();
+            Field = CreateFieldByString(fieldString);
+        }
+
+        public void Update()
+        {
+            Update(player.Directon);
         }
 
         public void Update(MoveDirection direction)
@@ -43,8 +61,7 @@ namespace Pacman.GameCore
             }
         }
 
-        private FieldItem[,] CreateFieldByString(string fieldString,
-            Dictionary<char, Func<Map, Point, FieldItem>> convertDict)
+        private FieldItem[,] CreateFieldByString(string fieldString)
         {
             var lines = fieldString.Split('\n')
                 .Select(s => s.Trim('\r'))
@@ -63,6 +80,36 @@ namespace Pacman.GameCore
             return field;
         }
 
+        public string FieldToSting()
+        {
+            var fildString = "";
+            for (var i = 0; i < Field.GetLength(0); i++)
+            {
+                var strbuild = new StringBuilder();
+                strbuild.Append('\n');
+                for (var j = 0; j < Field.GetLength(1); j++)
+                {
+                    var sym = ' ';
+                    if (Field[i, j] is Wall)
+                        sym = '#';
+                    else if (Field[i, j] is Player)
+                        sym = 'P';
+                    else if (Field[i, j] is Ghost)
+                        sym = 'G';
+                    else if (Field[i, j] is Coin)
+                        sym = '.';
+                    else if (Field[i, j] is BigCoin)
+                        sym = '*';
+                    else if (Field[i, j] is Respawn)
+                        sym = 'R';
+                    strbuild.Append(sym);
+                }
+                fildString += strbuild.ToString();
+            }
+            
+            return fildString.Remove(0, 1);
+        }
+
         private void SetItems(FieldItem item)
         {
             if (item is IMovable)
@@ -75,6 +122,5 @@ namespace Pacman.GameCore
                 persons.Add((IMovable) item);
             }
         }
-
     }
 }
