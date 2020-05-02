@@ -6,10 +6,14 @@ namespace Pacman.GameCore
 
     public class Wall : FieldItem { }
 
-    public class Respawn : FieldItem {
+    public class Respawn : FieldItem
+    {
+        public readonly Point Location;
         public Respawn(Point point)
         {
-            throw new System.NotImplementedException();
+            Location = point;
         }
     }
+
+    public class Empty : FieldItem { }
 }

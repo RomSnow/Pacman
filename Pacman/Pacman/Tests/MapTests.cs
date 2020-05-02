@@ -15,9 +15,10 @@ namespace Pacman.Tests
             {'P', (Map map, Point point) => new Player(map, point)},
             {'#', (map, point) => new Wall()},
             {'G', (Map map, Point point) => new Ghost(map, point)},
-            {'.', (Map map, Point point) => new Coin(point)},
-            {'*', (Map map, Point point) => new BigCoin(point)},
-            {'R', (Map map, Point point) => new Respawn(point)}
+            {'.', (Map map, Point point) => new Coin(map, point)},
+            {'*', (Map map, Point point) => new BigCoin(map, point)},
+            {'R', (Map map, Point point) => new Respawn(point)},
+            {' ', (Map map, Point point) => new Empty()}
         };
 
         [Test]
@@ -31,7 +32,7 @@ namespace Pacman.Tests
             var normalField = new FieldItem[,]
                 {
                     {new Wall(), new Wall(), new Wall(), new Wall(), new Wall()}, 
-                    {new Wall(), new Coin(new Point()), new Player(new Map(), new Point()), new Coin( new Point(3, 1)), new Wall()},
+                    {new Wall(), new Coin(new Map(),  new Point()), new Player(new Map(), new Point()), new Coin(new Map(),new Point()), new Wall()},
                     {new Wall(), new Wall(), new Wall(), new Wall(), new Wall()}
                 };
 
@@ -48,6 +49,22 @@ namespace Pacman.Tests
             var startString = "#####\n#.P.#\n#####";
             var map = new Map(startString, 0);
             Assert.AreEqual(startString, map.FieldToSting());
+        }
+
+        [Test]
+        public static void DoesPlayerMove()
+        {
+            var mapString = "#####\n" +
+                            "#..P#\n" +
+                            "#####\n";
+            var finalMapString = "#####\n" +
+                                 "#P  #\n" +
+                                 "#####\n";
+            var map = new Map(mapString, 1);
+            map.Update(MoveDirection.Left);
+            map.Update();
+            Assert.AreEqual(finalMapString, map.FieldToSting());
+            
         }
     }
 }

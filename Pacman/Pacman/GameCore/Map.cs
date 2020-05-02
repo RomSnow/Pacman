@@ -10,21 +10,25 @@ namespace Pacman.GameCore
     public class Map
     {
         public FieldItem[,] Field { get; set; }
-        public static int Score { get; set; }
-        public static int HealthPoints { get; set; }
-        public static bool IsGameOver { get; set; }
+        public int Score { get; set; }
+        public int HealthPoints { get; set; }
+        public bool IsGameOver { get; set; }
 
-        private static Dictionary<char, Func<Map, Point, FieldItem>> convertDict = 
+        public static Point RespawnPoint;
+
+        public int EnemyCount { get; set; }
+
+        private Dictionary<char, Func<Map, Point, FieldItem>> convertDict = 
             new Dictionary<char, Func<Map, Point, FieldItem>>()
             {
                 {'P', (Map map, Point point) => new Player(map, point)},
                 {'#', (map, point) => new Wall()},
                 {'G', (Map map, Point point) => new Ghost(map, point)},
-                {'.', (Map map, Point point) => new Coin(point)},
-                {'*', (Map map, Point point) => new BigCoin(point)},
-                {'R', (Map map, Point point) => new Respawn(point)}
+                {'.', (Map map, Point point) => new Coin(map, point)},
+                {'*', (Map map, Point point) => new BigCoin(map, point)},
+                {'R', (Map map, Point point) => new Respawn(point)},
+                {' ', (Map map, Point point) => new Empty()}
             };
-        public int EnemyCount { get; set; }
 
         private Player player;
 
@@ -80,9 +84,26 @@ namespace Pacman.GameCore
             return field;
         }
 
+        private void SetItems(FieldItem item)
+        {
+            if (item is IMovable movable)
+            {
+                if (movable is Player playerObj)
+                    player = playerObj;
+                else
+                    EnemyCount++;
+                
+                persons.Add(movable);
+            }
+            else if (item is Respawn respawnObj)
+            {
+                RespawnPoint = respawnObj.Location;
+            }
+        }
+
         public string FieldToSting()
         {
-            var fildString = "";
+            var fieldString = "";
             for (var i = 0; i < Field.GetLength(0); i++)
             {
                 var strbuild = new StringBuilder();
@@ -104,23 +125,10 @@ namespace Pacman.GameCore
                         sym = 'R';
                     strbuild.Append(sym);
                 }
-                fildString += strbuild.ToString();
+                fieldString += strbuild.ToString();
             }
             
-            return fildString.Remove(0, 1);
-        }
-
-        private void SetItems(FieldItem item)
-        {
-            if (item is IMovable)
-            {
-                if (item is Player)
-                    player = (Player) item;
-                else
-                    EnemyCount++;
-                
-                persons.Add((IMovable) item);
-            }
+            return fieldString.Remove(0, 1);
         }
     }
 }

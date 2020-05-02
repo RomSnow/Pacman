@@ -9,8 +9,11 @@ namespace Pacman.GameCore
         private bool IsPointAvailable { get; set; }
         private Point Location { get; set; }
 
-        public Coin(Point point)
+        private Map map;
+
+        public Coin(Map map, Point point)
         {
+            this.map = map;
             IsPointAvailable = true;
             Location = point;
             Value = 50;
@@ -20,7 +23,7 @@ namespace Pacman.GameCore
         {
             if (IsPointAvailable)
             {
-                Map.Score += Value;
+                map.Score += Value;
                 IsPointAvailable = false;
             }
         }
@@ -32,8 +35,11 @@ namespace Pacman.GameCore
         private bool IsPointAvailable { get; set; }
         private Point Location { get; set; }
 
-        public BigCoin(Point point)
+        private Map map;
+
+        public BigCoin(Map map, Point point)
         {
+            this.map = map;
             IsPointAvailable = true;
             Location = point;
             Value = 200;
@@ -43,7 +49,7 @@ namespace Pacman.GameCore
         {
             if (IsPointAvailable)
             {
-                Map.Score += Value;
+                map.Score += Value;
                 IsPointAvailable = false;
             }
         }
