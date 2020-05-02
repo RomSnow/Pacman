@@ -69,6 +69,7 @@ namespace Pacman.GameCore
         {
             var lines = fieldString.Split('\n')
                 .Select(s => s.Trim('\r'))
+                .Where(s => s != "")
                 .ToArray<string>();
             var field = new FieldItem[lines.Length, lines[0].Length];
 
@@ -101,7 +102,7 @@ namespace Pacman.GameCore
             }
         }
 
-        public string FieldToSting()
+        public override string ToString() 
         {
             var fieldString = "";
             for (var i = 0; i < Field.GetLength(0); i++)

@@ -48,7 +48,7 @@ namespace Pacman.Tests
         {
             var startString = "#####\n#.P.#\n#####";
             var map = new Map(startString, 0);
-            Assert.AreEqual(startString, map.FieldToSting());
+            Assert.AreEqual(startString, map.ToString());
         }
 
         [Test]
@@ -63,8 +63,41 @@ namespace Pacman.Tests
             var map = new Map(mapString, 1);
             map.Update(MoveDirection.Left);
             map.Update();
-            Assert.AreEqual(finalMapString, map.FieldToSting());
+            Assert.AreEqual(finalMapString, map.ToString());
             
+        }
+
+        [Test]
+        public static void DoesGhostAndRespawnWork()
+        {
+            var mapString = "#####\n" +
+                            "#G P#\n" +
+                            "#  R#\n" +
+                            "#####\n";
+            var finalMap = "#####\n" +
+                           "#  G#\n" +
+                           "#  P#\n" +
+                           "#####\n";
+            var map = new Map(mapString, 2);
+            map.Update(MoveDirection.Left);
+            map.Update();
+            Assert.AreEqual(finalMap, map.ToString());
+            Assert.AreEqual(1, map.HealthPoints);
+        }
+
+        [Test]
+        public static void DoesGhostEatCoin()
+        {
+            var mapString = "######\n" +
+                            "#G..P#\n" +
+                            "######\n";
+            var finalMap = "######\n" +
+                           "# .GP#\n" +
+                           "######\n";
+            var map = new Map(mapString, 0);
+            map.Update(MoveDirection.Right);
+            map.Update();
+            Assert.AreEqual(finalMap, map.ToString());
         }
     }
 }
