@@ -77,7 +77,7 @@ namespace Pacman.Tests
             var finalMap = "#####\n" +
                            "#  G#\n" +
                            "#  P#\n" +
-                           "#####\n";
+                           "#####";
             var map = new Map(mapString, 2);
             map.Update(MoveDirection.Left);
             map.Update();
@@ -93,7 +93,7 @@ namespace Pacman.Tests
                             "######\n";
             var finalMap = "######\n" +
                            "# .GP#\n" +
-                           "######\n";
+                           "######";
             var map = new Map(mapString, 0);
             map.Update(MoveDirection.Right);
             map.Update();
