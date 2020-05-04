@@ -13,8 +13,9 @@ namespace Pacman.GameCore
         public int Score { get; set; }
         public int HealthPoints { get; set; }
         public bool IsGameOver { get; set; }
-
-        public static Point RespawnPoint;
+        public List<Coin> Coins { get; set; }
+        public List<BigCoin> BigCoins { get; set; }
+        public Point RespawnPoint;
 
         public int EnemyCount { get; set; }
 
