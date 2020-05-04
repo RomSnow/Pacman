@@ -12,7 +12,7 @@ namespace Pacman.GameCore
         public FieldItem[,] Field { get; set; }
         public int Score { get; set; }
         public int HealthPoints { get; set; }
-        public bool IsGameOver { get; set; }
+        public bool IsGameOver { get; private set; }
         public HashSet<Point> CoinsLocations { get; set; }
         public HashSet<Point> BigCoinsLocations { get; set; }
         public Point RespawnPoint { get; private set; }
@@ -66,11 +66,11 @@ namespace Pacman.GameCore
                 {
                     if (CoinsLocations.Contains(lastPosition))
                     {
-                        Field[(int)lastPosition.X, (int)lastPosition.Y] = new Coin(this, lastPosition);
+                        Field[(int)lastPosition.Y, (int)lastPosition.X] = new Coin(this, lastPosition);
                     }
                     else if (BigCoinsLocations.Contains(lastPosition))
                     {
-                        Field[(int)lastPosition.X, (int)lastPosition.Y] = new BigCoin(this, lastPosition);
+                        Field[(int)lastPosition.Y, (int)lastPosition.X] = new BigCoin(this, lastPosition);
                     }
                 }
                 if (HealthPoints == 0 || EnemyCount == 0)
@@ -126,8 +126,8 @@ namespace Pacman.GameCore
             var fieldString = "";
             for (var i = 0; i < Field.GetLength(0); i++)
             {
-                var strbuild = new StringBuilder();
-                strbuild.Append('\n');
+                var stringBuilder = new StringBuilder();
+                stringBuilder.Append('\n');
                 for (var j = 0; j < Field.GetLength(1); j++)
                 {
                     var sym = ' ';
@@ -143,9 +143,9 @@ namespace Pacman.GameCore
                         sym = '*';
                     else if (Field[i, j] is Respawn)
                         sym = 'R';
-                    strbuild.Append(sym);
+                    stringBuilder.Append(sym);
                 }
-                fieldString += strbuild.ToString();
+                fieldString += stringBuilder.ToString();
             }
             
             return fieldString.Remove(0, 1);

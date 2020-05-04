@@ -34,17 +34,17 @@ namespace Pacman.GameCore
             if (direction == MoveDirection.Right &&
                 !(map.Field[(int)location.Y, (int)location.X + 1] is Wall))
             {
+                collisionObject = map.Field[(int)location.Y, (int)location.X + 1];
                 map.Field[(int)location.Y, (int)location.X] = new Empty();
                 location = new Point(location.X + 1, location.Y);
-                collisionObject = map.Field[(int)location.Y, (int)location.X];
                 map.Field[(int)location.Y, (int)location.X] = this;
             }
             else if (direction == MoveDirection.Left &&
                 !(map.Field[(int)location.Y, (int)location.X - 1] is Wall))
             {
+                collisionObject = map.Field[(int)location.Y, (int)location.X - 1];
                 map.Field[(int)location.Y, (int)location.X] = new Empty();
                 location = new Point(location.X - 1, location.Y);
-                collisionObject = map.Field[(int)location.Y, (int)location.X];
                 map.Field[(int)location.Y, (int)location.X] = this;
             }
             else if (direction == MoveDirection.Down &&
@@ -74,7 +74,7 @@ namespace Pacman.GameCore
             if (obj is Coin)
             {
                 map.Score += 50;
-                coinsLocations.Remove(location);
+                map.CoinsLocations.Remove(location);
             }
             if (obj is BigCoin)
             {
