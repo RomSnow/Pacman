@@ -36,7 +36,7 @@ namespace Pacman.GameCore
             {
                 map.Field[(int)location.Y, (int)location.X] = new Empty();
                 location = new Point(location.X + 1, location.Y);
-                collisionObject = map.Field[(int)location.X, (int)location.Y];
+                collisionObject = map.Field[(int)location.Y, (int)location.X];
                 map.Field[(int)location.Y, (int)location.X] = this;
             }
             else if (direction == MoveDirection.Left &&
@@ -44,7 +44,7 @@ namespace Pacman.GameCore
             {
                 map.Field[(int)location.Y, (int)location.X] = new Empty();
                 location = new Point(location.X - 1, location.Y);
-                collisionObject = map.Field[(int)location.X, (int)location.Y];
+                collisionObject = map.Field[(int)location.Y, (int)location.X];
                 map.Field[(int)location.Y, (int)location.X] = this;
             }
             collisionObject = map.Field[(int)location.Y, (int)location.X];
