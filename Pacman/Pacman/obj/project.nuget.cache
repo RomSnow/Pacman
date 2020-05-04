@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2bbcPR5x26ZuSyguVwQlkAUzwq/hMRbzR517v2z2V1JlkaCYewNHFNdCFJCyzYvervRvY7uaQhGBGObidTQGdA==",
+  "dgSpecHash": "w2K+4D0HTmiASw+pvgX8aXwEuQrmHJQoxlHI0Q1VbN9Q6lHRUFGJmKOzXcGhs7IWhG+Hhqc9+SsFVCnKnTBBtQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\20kol\\Source\\Repos\\RomSnow\\Pacman\\Pacman\\Pacman\\Pacman.csproj",
+  "projectFilePath": "C:\\Users\\20kol\\source\\repos\\RomSnow\\Pacman\\Pacman\\Pacman\\Pacman.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\20kol\\.nuget\\packages\\microsoft.codecoverage\\16.6.1\\microsoft.codecoverage.16.6.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",

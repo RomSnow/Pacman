@@ -6,8 +6,6 @@ namespace Pacman.GameCore
     public class Ghost : FieldItem, IMovable
     {
         private bool IsGhostAlive { get; set; }
-        private bool IsGhostEatable { get; set; }
-        private int RewardForEating { get; set; }
         private Map Map { get; set; }
         private Point Location { get; set; }
         private MoveDirection Direction { get; set; }
@@ -18,8 +16,6 @@ namespace Pacman.GameCore
         {
             Map = map;
             Location = point;
-            RewardForEating = 200;
-            IsGhostEatable = false;
             IsGhostAlive = true;
         }
 

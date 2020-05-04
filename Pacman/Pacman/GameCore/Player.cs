@@ -1,33 +1,56 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Windows;
 
 namespace Pacman.GameCore
 {
     public class Player : FieldItem, IPlayer
     {
         public MoveDirection Directon { get; set; }
-        private Point Location { get; set; }
-        private Map Map { get; set; }
+        private Point location;
+        private Map map;
+        private int timeToEndboost;
+        private HashSet<Point> coinsLocations;
+        private HashSet<Point> bigCoinsLocations;
 
         public Player(Map map, Point point)
         {
-            Location = point;
-            Map = map;
+            location = point;
+            this.map = map;
+            coinsLocations = map.CoinsLocations;
+            bigCoinsLocations = map.BigCoinsLocations;
         }
 
         public void Move(out FieldItem collisionObject)
         {
-            throw new System.NotImplementedException();
-            // Реализация должна быть довольно простой -
-            // перемещаемся туда, куда указывает Direction
+            if (map.IsPlayerBoost && timeToEndboost == 0)
+            {
+                map.IsPlayerBoost = false;
+            }
+            else if (map.IsPlayerBoost)
+            {
+                timeToEndboost -= 0;
+            }
         }
 
         public void Collision(FieldItem obj)
         {
-            throw new System.NotImplementedException();
-            // Не забыть об обработке сбора коинов
-            // Подумать о том, где уменьшать жизни игрока (тут или в Ghost.cs)
-            
-            //Для этого в Map есть HealthPoints, просто уменьшай их
+            if (obj is Coin)
+            {
+                map.Score += 50;
+                coinsLocations.Remove(location);
+            }
+            if (obj is BigCoin)
+            {
+                map.Score += 200;
+                bigCoinsLocations.Remove(location);
+                map.IsPlayerBoost = true;
+                timeToEndboost = 10;
+            }
+            if (obj is Ghost)
+            {
+
+            }
         }
 
         public void SetMoveDirection(MoveDirection direction)
