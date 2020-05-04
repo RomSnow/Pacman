@@ -6,22 +6,20 @@ namespace Pacman.GameCore
     public class Ghost : FieldItem, IMovable
     {
         private bool IsGhostAlive { get; set; }
-        private Map Map { get; set; }
-        private Point Location { get; set; }
+        private Map map;
+        private Point location;
         private MoveDirection Direction { get; set; }
 
         public Ghost(Map map, Point point)
         {
-            Map = map;
-            Location = point;
+            this.map = map;
+            location = point;
             IsGhostAlive = true;
         }
 
         public void Move(out FieldItem collisionObject)
         {
             throw new System.NotImplementedException();
-            // Потребуется добавить возврат коинов на место, которое будет
-            // простой проверкой, не явлется ли Saved(Big)Coin null'ом
         }
 
         private void ChangeDirection()
@@ -39,19 +37,15 @@ namespace Pacman.GameCore
 
         public void Collision(FieldItem obj)
         {
-            if (obj is Player && IsGhostEatable && IsGhostAlive)
+            if (obj is Player && map.IsPlayerBoost && IsGhostAlive)
             {
                 IsGhostAlive = false;
-                Map.Score += RewardForEating;
             }
-            else if (obj is Player && !IsGhostEatable && IsGhostAlive)
-            {
-                Map.HealthPoints--;
-                // Нужно ещё дописать что-то типа ухода Пакмана в неуязвимость
-                // на пару секунд, чтобы его не задамажили в одно мгновение
-                
-                //Если пакман погиб, то его надо перемещать на точку респауна
-            }
+        }
+
+        public Point GetLocation()
+        {
+            return location;
         }
     }
 }
