@@ -98,9 +98,12 @@ namespace Pacman.GameCore
                 persons.Add(movable);
             }
             else if (item is Respawn respawnObj)
-            {
                 RespawnPoint = respawnObj.Location;
-            }
+            else if (item is Coin coinObj)
+                CoinsLocations.Add(coinObj.Location);
+            else if (item is BigCoin bigCoinObj)
+                BigCoinsLocations.Add(bigCoinObj.Location);
+                
         }
 
         public override string ToString() 

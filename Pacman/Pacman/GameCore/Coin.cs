@@ -7,7 +7,7 @@ namespace Pacman.GameCore
     {
         public int Value { get; set; }
         private bool IsPointAvailable { get; set; }
-        private Point Location { get; set; }
+        public Point Location { get; set; }
 
         private Map map;
 
@@ -33,7 +33,7 @@ namespace Pacman.GameCore
     {
         private int Value { get; set; }
         private bool IsPointAvailable { get; set; }
-        private Point Location { get; set; }
+        public Point Location { get; set; }
 
         private Map map;
 
