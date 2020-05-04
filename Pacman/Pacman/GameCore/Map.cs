@@ -39,6 +39,8 @@ namespace Pacman.GameCore
 
         public Map(string fieldString, int healthPoints)
         {
+            CoinsLocations = new HashSet<Point>();
+            BigCoinsLocations = new HashSet<Point>();
             IsGameOver = false;
             Score = 0;
             HealthPoints = healthPoints;
@@ -56,8 +58,21 @@ namespace Pacman.GameCore
             player.SetMoveDirection(direction);
             foreach (var person in persons)
             {
+                var lastPosition = person.GetLocation();
                 person.Move(out var collisionItem);
                 person.Collision(collisionItem);
+                var currentPosition = person.GetLocation();
+                if (lastPosition != currentPosition)
+                {
+                    if (CoinsLocations.Contains(lastPosition))
+                    {
+                        Field[(int)lastPosition.X, (int)lastPosition.Y] = new Coin(this, lastPosition);
+                    }
+                    else if (BigCoinsLocations.Contains(lastPosition))
+                    {
+                        Field[(int)lastPosition.X, (int)lastPosition.Y] = new BigCoin(this, lastPosition);
+                    }
+                }
                 if (HealthPoints == 0 || EnemyCount == 0)
                 {
                     IsGameOver = true;
