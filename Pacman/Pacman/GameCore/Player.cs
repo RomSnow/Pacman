@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using NUnit.Framework;
+using System.Collections.Generic;
+using System.Windows;
 
 namespace Pacman.GameCore
 {
@@ -6,28 +8,49 @@ namespace Pacman.GameCore
     {
         public MoveDirection Directon { get; set; }
         private Point Location { get; set; }
-        private Map Map { get; set; }
+        private Map map;
+        private HashSet<Point> coinsLocations;
+        private HashSet<Point> bigCoinsLocations;
+        private int TimeToBoostEnd;
 
         public Player(Map map, Point point)
         {
+            this.map = map;
             Location = point;
-            Map = map;
+            coinsLocations = map.CoinsLocations;
+            bigCoinsLocations = map.BigCoinsLocations;
         }
 
         public void Move(out FieldItem collisionObject)
         {
-            throw new System.NotImplementedException();
-            // Реализация должна быть довольно простой -
-            // перемещаемся туда, куда указывает Direction
+            if (map.IsPlayerBoost && TimeToBoostEnd == 0)
+            {
+                map.IsPlayerBoost = false;
+            }
+            else if (map.IsPlayerBoost)
+            {
+                TimeToBoostEnd -= 1;
+            }
         }
 
         public void Collision(FieldItem obj)
         {
-            throw new System.NotImplementedException();
-            // Не забыть об обработке сбора коинов
-            // Подумать о том, где уменьшать жизни игрока (тут или в Ghost.cs)
-            
-            //Для этого в Map есть HealthPoints, просто уменьшай их
+            if (obj is Coin)
+            {
+                map.Score += 50;
+                coinsLocations.Remove(Location);
+            }
+            if (obj is BigCoin)
+            {
+                map.Score += 200;
+                bigCoinsLocations.Remove(Location);
+                map.IsPlayerBoost = true;
+                TimeToBoostEnd = 10;
+            }
+            if (obj is Ghost)
+            {
+
+            }    
         }
 
         public void SetMoveDirection(MoveDirection direction)
