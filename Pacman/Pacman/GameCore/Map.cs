@@ -48,7 +48,7 @@ namespace Pacman.GameCore
 
         public void Update()
         {
-            Update(player.Directon);
+            Update(player.direction);
         }
 
         public void Update(MoveDirection direction)
