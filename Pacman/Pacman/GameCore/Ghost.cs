@@ -9,8 +9,6 @@ namespace Pacman.GameCore
         private Map Map { get; set; }
         private Point Location { get; set; }
         private MoveDirection Direction { get; set; }
-        private Coin SavedCoin { get; set; }
-        private BigCoin SavedBigCoin { get; set; }
 
         public Ghost(Map map, Point point)
         {
@@ -53,14 +51,6 @@ namespace Pacman.GameCore
                 // на пару секунд, чтобы его не задамажили в одно мгновение
                 
                 //Если пакман погиб, то его надо перемещать на точку респауна
-            }
-            else if (obj is Coin)
-            {
-                SavedCoin = (Coin)obj;
-            }
-            else if (obj is BigCoin)
-            {
-                SavedBigCoin = (BigCoin)obj;
             }
         }
     }

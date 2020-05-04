@@ -5,8 +5,7 @@ namespace Pacman.GameCore
 {
     public class Coin : FieldItem
     {
-        private Point Location { get; set; }
-
+        public Point Location { get; set; }
         private Map map;
 
         public Coin(Map map, Point point)
@@ -18,8 +17,7 @@ namespace Pacman.GameCore
 
     public class BigCoin : FieldItem
     {
-        private Point Location { get; set; }
-
+        public Point Location { get; set; }
         private Map map;
 
         public BigCoin(Map map, Point point)
