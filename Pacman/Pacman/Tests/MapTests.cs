@@ -59,7 +59,7 @@ namespace Pacman.Tests
                             "#####\n";
             var finalMapString = "#####\n" +
                                  "#P  #\n" +
-                                 "#####\n";
+                                 "#####";
             var map = new Map(mapString, 1);
             map.Update(MoveDirection.Left);
             map.Update();

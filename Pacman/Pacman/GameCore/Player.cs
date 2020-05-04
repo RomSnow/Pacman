@@ -31,7 +31,7 @@ namespace Pacman.GameCore
             {
                 timeToEndboost -= 1;
             }
-            if (direction == MoveDirection.Right && 
+            if (direction == MoveDirection.Right &&
                 !(map.Field[(int)location.Y, (int)location.X + 1] is Wall))
             {
                 map.Field[(int)location.Y, (int)location.X] = new Empty();
@@ -47,7 +47,26 @@ namespace Pacman.GameCore
                 collisionObject = map.Field[(int)location.Y, (int)location.X];
                 map.Field[(int)location.Y, (int)location.X] = this;
             }
-            collisionObject = map.Field[(int)location.Y, (int)location.X];
+            else if (direction == MoveDirection.Down &&
+                !(map.Field[(int)location.Y + 1, (int)location.X] is Wall))
+            {
+                map.Field[(int)location.Y, (int)location.X] = new Empty();
+                location = new Point(location.X, location.Y + 1);
+                collisionObject = map.Field[(int)location.Y, (int)location.X];
+                map.Field[(int)location.Y, (int)location.X] = this;
+            }
+            else if (direction == MoveDirection.Up &&
+                !(map.Field[(int)location.Y - 1, (int)location.X] is Wall))
+            {
+                map.Field[(int)location.Y, (int)location.X] = new Empty();
+                location = new Point(location.X, location.Y - 1);
+                collisionObject = map.Field[(int)location.Y, (int)location.X];
+                map.Field[(int)location.Y, (int)location.X] = this;
+            }
+            else
+            {
+                collisionObject = map.Field[(int)location.Y, (int)location.X];
+            }
         }
 
         public void Collision(FieldItem obj)
