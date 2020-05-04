@@ -13,11 +13,11 @@ namespace Pacman.GameCore
         public int Score { get; set; }
         public int HealthPoints { get; set; }
         public bool IsGameOver { get; set; }
-        public List<Coin> Coins { get; set; }
-        public List<BigCoin> BigCoins { get; set; }
-        public Point RespawnPoint;
-
+        public HashSet<Point> CoinsLocations { get; set; }
+        public HashSet<Point> BigCoinsLocations { get; set; }
+        public Point RespawnPoint { get; private set; }
         public int EnemyCount { get; set; }
+        public bool IsPlayerBoost { get; set; }
 
         private Dictionary<char, Func<Map, Point, FieldItem>> convertDict = 
             new Dictionary<char, Func<Map, Point, FieldItem>>()
